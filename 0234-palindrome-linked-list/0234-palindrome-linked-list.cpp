@@ -9,48 +9,37 @@
  * };
  */
 class Solution {
+    private:
+        bool checkPal(vector<int> arr){
+            int e = arr.size()-1;
+            int s = 0;
+
+            
+            while(s<=e){
+                if(arr[s] != arr[e]){
+                    return false;
+                }
+                
+                s++;
+                e--;
+            }
+            return true;
+        }
 public:
     bool isPalindrome(ListNode* head) {
         
         vector<int> arr;
         
         ListNode* temp = head;
-        int size = 0;
         
         while(temp != NULL){
-            
-            temp = temp->next;
-            size++;
-            
-        }
-        
-        ////////////////////////////////////
-        temp = head;
-        
-        while(temp != NULL){
-        for(int i =0; i<size; i++){
             
             arr.push_back(temp->val);
             temp = temp->next;
-            
-            } 
+    
         }
       
-        /////////////////////////////
-        //check pal
-        int left = 0;
-        int right = arr.size() - 1;
-
-        while (left < right) {
-            if (arr[left] != arr[right]) {
-                return false;
-            }
-            left++;
-            right--;
-        }
-
-        return true;
-
+          return checkPal(arr);
     }
 };
 
